@@ -1,7 +1,12 @@
-export default function App() {
+import React from "react";
+import TheRouter from "./routes/TheRouter";
+
+function App() {
   return (
-    <h1 className="text-4xl font-bold underline text-center">
-      God is here
-    </h1>
-  )
+    <div>
+      <TheRouter />
+    </div>
+  );
 }
+
+export default App;
