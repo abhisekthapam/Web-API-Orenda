@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import keemaNoodle from "../assets/Keema.png";
-import TheSmallScreenHome from "../small-screen/pages/TheSmallScreenHome";
+import photo_api from "../api/photoConfig";
 
 const TheHome = () => {
-  const [isAnswerVisible, setIsAnswerVisible] = useState(
-    new Array(5).fill(false)
-  );
-  const [isPlusVisible, setIsPlusVisible] = useState(new Array(5).fill(true));
+  const [menuItems, setMenuItems] = useState([]);
+  const [isAnswerVisible, setIsAnswerVisible] = useState([]);
+  const [isPlusVisible, setIsPlusVisible] = useState([]);
   const answerRefs = useRef([]);
 
   const questions = [
@@ -26,9 +27,30 @@ const TheHome = () => {
     "Your satisfaction is our utmost priority. Our dedicated team is always on standby to assist you with any queries or concerns, ensuring your Cold and Hot Spicy experience is nothing short of exceptional.",
   ];
 
+  useEffect(() => {
+    fetchMenuItems();
+  }, []);
+
+  const fetchMenuItems = async () => {
+    try {
+      const response = await axios.get("/menu/allitems");
+      const initialAnswerVisibility = new Array(questions.length).fill(false);
+      const initialPlusVisibility = new Array(questions.length).fill(true);
+      setMenuItems(response.data);
+      setIsAnswerVisible(initialAnswerVisibility);
+      setIsPlusVisible(initialPlusVisibility);
+    } catch (error) {
+      console.error("Error fetching menu items:", error);
+    }
+  };
+
   const showAnswer = (index) => {
-    setIsAnswerVisible((prevState) => prevState.map((_, i) => i === index));
-    setIsPlusVisible((prevState) => prevState.map((_, i) => i !== index));
+    setIsAnswerVisible((prevState) =>
+      prevState.map((val, i) => (i === index ? true : false))
+    );
+    setIsPlusVisible((prevState) =>
+      prevState.map((val, i) => (i === index ? false : true))
+    );
   };
 
   const hideAnswer = (index) => {
@@ -41,73 +63,98 @@ const TheHome = () => {
   };
 
   return (
-    <div>
-      <div className="hidden lg:block">
-        <div className="flex flex-col gap-[1rem] lg:gap-[5rem]">
-          <section className="px-[5%] md:px-[7%] lg:px-[12%]">
-            <div className="flex justify-between">
-              <div className="py-[5%] md:py-[8%] w-full lg:w-[55%] flex flex-col gap-9">
-                <div>
-                  <div className="md:flex md:justify-between">
-                    <div>
-                      <h1 className="heading leading-8 text-sm md:text-[24px] mb-5 md:mb-[36px] text-accent font-lora">
-                        Welcome to <br className="hidden md:block lg:hidden" />{" "}
-                        Orenda
-                      </h1>
-                      <p className="text-3xl leading-none md:text-[54px] font-bold font-cardo">
-                        Experience culinary excellence
-                      </p>
+    <div className="text-[#2C3033]">
+      <div className=" flex flex-col gap-[1rem] lg:gap-[5rem]">
+        <section className="px-[5%] md:px-[7%] lg:px-[12%]">
+          <div className="flex justify-between">
+            <div className="py-[5%] md:py-[8%] w-full lg:w-[55%] flex flex-col gap-9">
+              <div>
+                <div className="md:flex md:justify-between">
+                  <div>
+                    <h1 className="heading leading-8 text-sm md:text-[24px] mb-5 md:mb-[36px]">
+                      Welcome to <br className="hidden md:block lg:hidden" />{" "}
+                      Cold & Hot Spicy
+                    </h1>
+                    <p className="heading-part text-[27px] md:text-[54px]">
+                      Experience culinary excellence
+                    </p>
+                  </div>
+                  <div>
+                    <div className="lg:hidden w-full">
+                      <img
+                        src={keemaNoodle}
+                        alt="Keema Noodle"
+                        title="Keema Noodle"
+                        className="w-full object-contain"
+                        loading="lazy"
+                      />
                     </div>
-                    <div>
-                      <div className="lg:hidden w-full">
-                        <img
-                          src={keemaNoodle}
-                          alt="Keema Noodle"
-                          title="Keema Noodle"
-                          className="w-full object-contain"
-                          loading="lazy"
-                        />
+                  </div>
+                </div>
+                <p className="heading-part-font leading-8">
+                  Step into our portal for unforgettable dining experiences.
+                  Explore our diverse menu, effortlessly place your order, and
+                  elevate your palate with unparalleled ease. Join us as we
+                  embark on a journey of simplified culinary bliss.
+                </p>
+              </div>
+              <div className="flex justify-center md:justify-start">
+                <Link to="/menu">
+                  <button className="order px-2 py-1 md:px-4 md:py-2">
+                    Order Now
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block w-full md:w-[40%]">
+              <img
+                src={keemaNoodle}
+                alt="Keema Noodle"
+                title="Keema Noodle"
+                className="w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="px-[2%] md:px-[10%]">
+          <div className="flex flex-col gap-2 mb-7">
+            <p className="heading-part-font">Popular Dishes</p>
+            <p className="heading-part text-[27px] md:text-[31px]">
+              Our Exclusive Items
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 mb-6">
+            {menuItems.slice(0, 4).map((item) => (
+              <div className="bg-white special-item shadow-custom-shadow">
+                <div key={item.id} className="overflow-hidden rounded-lg">
+                  <img
+                    className="w-full h-60 md:h-72 object-cover object-center"
+                    src={photo_api + item.images.name}
+                    alt={item.name}
+                    title={item.name}
+                  />
+                  <div className="p-4 py-7">
+                    <p className="text-sm text-gray-700 font-semibold mb-2">
+                      {item.name}
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="text-gray-700 font-bold text-sm">
+                          Rs.{item.price}
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <p className="leading-8 py-6 font-cardo text-secondary">
-                    Step into our portal for unforgettable dining experiences.
-                    Explore our diverse menu, effortlessly place your order, and
-                    elevate your palate with unparalleled ease. Join us as we
-                    embark on a journey of simplified culinary bliss.
-                  </p>
-                </div>
-                <div className="flex justify-center md:justify-start font-cardo">
-                  <Link to="/menu">
-                    <button className="order px-2 py-1 md:px-4 md:py-2">
-                      Order Now
-                    </button>
-                  </Link>
                 </div>
               </div>
-              <div className="hidden lg:block w-full md:w-[40%]">
-                <img
-                  src={keemaNoodle}
-                  alt="Keema Noodle"
-                  title="Keema Noodle"
-                  className="w-full object-contain"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </section>
+            ))}
+          </div>
+        </section>
 
-          <section className="px-[2%] md:px-[10%]">
-            <div className="flex flex-col gap-2 mb-7">
-              <p className="heading-part-font">Popular Dishes</p>
-              <p className="heading-part text-[27px] md:text-[31px]">
-                Our Exclusive Items
-              </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 mb-6"></div>
-          </section>
-
-          <section className="px-[2%] md:px-[10%] mb-10">
+        <section className="px-[2%] md:px-[10%] mb-10">
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 heading-part-font leading-8">
               <div className="p-2 bg-white shadow-custom-shadow rounded-md">
                 <p>Our Story</p>
@@ -178,11 +225,8 @@ const TheHome = () => {
                 </div>
               ))}
             </div>
-          </section>
-        </div>
-      </div>
-      <div className="lg:hidden">
-        <TheSmallScreenHome />
+          </div>
+        </section>
       </div>
     </div>
   );
