@@ -1,8 +1,8 @@
 import React from "react";
-import { IoClose } from "react-icons/io5";
-import logo from "../../../assets/Logo.png";
 import { FaCircle } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 import photo_api from "../../../api/photoConfig";
+import logo from "../../../assets/Logo.png";
 
 function TheProductViewModal({ productDetails, closeModal }) {
   return (
@@ -11,12 +11,12 @@ function TheProductViewModal({ productDetails, closeModal }) {
         <div className="bg-white rounded-lg p-8 w-[35rem] shadow-md mx-2">
           <div>
             <div className="flex justify-center">
-              <img src={logo} alt="Cold and Spicy Logo" className="w-[35%]" />
+              <img src={logo} alt="Cold and Spicy Logo" className="w-[25%]" />
             </div>{" "}
             <div className="flex justify-between mb-3 relative">
               <p className="text-xl font-bold text-gray-700">Product Details</p>
               <button onClick={closeModal} title="Close">
-                <IoClose className="text-2xl absolute -top-10 -right-2" />
+                <IoClose className="text-2xl absolute -top-[8rem] -right-2" />
               </button>
             </div>
             <div className="flex">

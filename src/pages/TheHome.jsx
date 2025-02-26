@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { IoIosArrowUp } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import keemaNoodle from "../assets/Keema.png";
 import photo_api from "../api/photoConfig";
+import keemaNoodle from "../assets/Keema.png";
+import TheFooter from "./TheFooter";
 
 const TheHome = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -24,7 +24,7 @@ const TheHome = () => {
     "From refreshing salads to fiery curries, our diverse menu caters to every taste bud, ensuring there's something for everyone to savor.",
     "Our user-friendly web application, crafted with ReactJS and Tailwind CSS, ensures ordering your favorites is a breeze. With just a few clicks, you can explore our menu, customize your order, and await doorstep delivery.",
     "We understand the importance of timely delivery, striving to ensure your order reaches you promptly and in pristine condition, every time.",
-    "Your satisfaction is our utmost priority. Our dedicated team is always on standby to assist you with any queries or concerns, ensuring your Cold and Hot Spicy experience is nothing short of exceptional.",
+    "Your satisfaction is our utmost priority. Our dedicated team is always on standby to assist you with any queries or concerns, ensuring your Orenda experience is nothing short of exceptional.",
   ];
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const TheHome = () => {
                   <div>
                     <h1 className="heading leading-8 text-sm md:text-[24px] mb-5 md:mb-[36px]">
                       Welcome to <br className="hidden md:block lg:hidden" />{" "}
-                      Cold & Hot Spicy
+                      Orenda Restaurant,
                     </h1>
                     <p className="heading-part text-[27px] md:text-[54px]">
                       Experience culinary excellence
@@ -159,7 +159,7 @@ const TheHome = () => {
               <div className="p-2 bg-white shadow-custom-shadow rounded-md">
                 <p>Our Story</p>
                 <p className="heading-part text-[27px] md:text-[31px] mt-5">
-                  The tale of Cold and Hot Spicy
+                  The tale of Orenda
                 </p>
                 <p className="px-[3%]">
                   <span className="heading-part text-[22px] md:text-[25px]">
@@ -178,7 +178,7 @@ const TheHome = () => {
               <div className="p-2 bg-white shadow-custom-shadow rounded-md">
                 <p>Our Mission</p>
                 <p className="heading-part text-[27px] md:text-[31px] mt-5">
-                  At Cold and Hot Spicy
+                  At Orenda
                 </p>
                 <p className="px-[3%]">
                   <span className="heading-part text-[22px] md:text-[25px]">
@@ -196,7 +196,7 @@ const TheHome = () => {
             </div>
             <div className="mt-4 flex flex-col gap-3 py-3 bg-white shadow-custom-shadow rounded-md">
               <p className="heading-part text-[27px] md:text-[31px] text-center pt-4">
-                Why Choose Cold and Hot Spicy?
+                Why Choose Orenda?
               </p>
               {questions.map((question, index) => (
                 <div key={index} className="border-b py-3 px-[3%]">
@@ -228,6 +228,7 @@ const TheHome = () => {
           </div>
         </section>
       </div>
+      <TheFooter />
     </div>
   );
 };

@@ -1,9 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import logo from "../../../assets/Logo.png";
-import axios from "axios";
 import * as Yup from "yup";
 import TheBearer from "../../../api/TheBearer";
+import logo from "../../../assets/Logo.png";
 
 function TheProductUpdateModal({ closeModal, productDetails }) {
   const [formData, setFormData] = useState({
@@ -94,12 +94,12 @@ function TheProductUpdateModal({ closeModal, productDetails }) {
         <div className="bg-white rounded-lg p-8 w-[35rem] shadow-md mx-2">
           <div>
             <div className="flex justify-center">
-              <img src={logo} alt="Cold and Spicy Logo" className="w-[35%]" />
+              <img src={logo} alt="Cold and Spicy Logo" className="w-[25%]" />
             </div>
             <div className="flex justify-between mb-3 relative">
               <p className="text-xl font-bold text-gray-700">Update Product</p>
               <button onClick={closeModal} title="Close">
-                <IoClose className="text-2xl absolute -top-10 -right-2" />
+                <IoClose className="text-2xl absolute -top-[8rem] -right-2" />
               </button>
             </div>
             <form onSubmit={handleSubmit}>

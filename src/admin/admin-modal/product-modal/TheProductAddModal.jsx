@@ -1,10 +1,9 @@
+import { useFormik } from "formik";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { useFormik } from "formik";
 import * as Yup from "yup";
 import TheBearer from "../../../api/TheBearer";
 import logo from "../../../assets/Logo.png";
-import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().min(2).required("Name is required"),
@@ -60,12 +59,12 @@ const TheProductAddModal = ({ closeModal }) => {
     <div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-8 w-[50rem] shadow-md mx-2">
         <div className="flex justify-center">
-          <img src={logo} alt="Cold and Spicy Logo" className="w-[35%]" />
+          <img src={logo} alt="Cold and Spicy Logo" className="w-[25%]" />
         </div>
         <div className="flex justify-between mb-3 relative">
           <p className="text-xl font-bold text-gray-700">Add Product</p>
           <button onClick={closeModal} title="Close">
-            <IoClose className="text-2xl absolute -top-12 -right-2" />
+            <IoClose className="text-2xl absolute -top-[8rem] -right-2" />
           </button>
         </div>
         <form onSubmit={formik.handleSubmit}>

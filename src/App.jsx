@@ -1,12 +1,9 @@
-import React from "react";
-import TheRouter from "./routes/TheRouter";
+import TheRouter from "./router/TheRouter";
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <div className="primary-bg-color h-[100vh] custom-scroll">
       <TheRouter />
     </div>
   );
 }
-
-export default App;
