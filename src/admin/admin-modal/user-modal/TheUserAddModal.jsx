@@ -58,15 +58,15 @@ function TheUserAddModal({ closeModal }) {
   };
 
   return (
-    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-50 z-50">
+    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-8 w-[50rem] shadow-md mx-2">
         <div className="flex justify-center">
-          <img src={logo} alt="Cold and Spicy Logo" className="w-[25%]" />
+          <img src={logo} alt="Cold and Spicy Logo" className="w-[20%]" />
         </div>
         <div className="flex justify-between mb-3 relative">
           <p className="text-xl font-bold">Add User</p>
           <button onClick={closeModal} title="Close">
-            <IoClose className="text-2xl absolute -top-12 -right-2" />
+            <IoClose className="text-2xl absolute -top-[5rem] md:-top-[10rem] -right-2" />
           </button>
         </div>
         <form onSubmit={handleSubmit}>

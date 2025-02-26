@@ -60,7 +60,7 @@ function TheUserUpdateModal({ userDetails, closeModal }) {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-50 z-50">
+      <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50 z-50">
         <div className="bg-white rounded-lg p-8 w-[35rem] shadow-md mx-2">
           <div>
             <div className="flex justify-center">
