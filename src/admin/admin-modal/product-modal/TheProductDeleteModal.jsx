@@ -34,7 +34,7 @@ function TheProductDeleteModal({ productId, onCancel, handleDelete }) {
   };
 
   return (
-    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-50 z-50">
+    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg p-8 w-[35rem] shadow-md mx-2">
         <div>
           <div className="flex justify-center">
@@ -43,7 +43,7 @@ function TheProductDeleteModal({ productId, onCancel, handleDelete }) {
           <div className="flex justify-between mb-3 relative">
             <p className="text-xl font-bold text-red-500">Delete Product</p>
             <button onClick={onCancel} title="Close">
-              <IoClose className="text-2xl absolute -top-12 -right-2" />
+              <IoClose className="text-2xl absolute -top-[8rem] -right-2" />
             </button>
           </div>
         </div>

@@ -28,7 +28,7 @@ function TheAdminRoutes() {
 
   if (!token) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="flex justify-center items-center h-screen bg-gray-100 p-3">
         <div className="bg-white p-12 rounded-lg shadow-lg text-center w-96">
           <div className="flex justify-center mb-4">
             <FaLock className="text-red-500 w-8 h-8" />
