@@ -2,26 +2,173 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #555555;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #555555;
-}
-
-::-webkit-scrollbar-track {
+.primary-bg-color {
   background-color: #fefbf6;
-  border-radius: 10px;
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #555555 #fefbf6;
+.primary-btn-color {
+  background-color: #ecb159;
+  color: #fefbf6;
+}
+
+.primary-color {
+  color: #ecb159;
+}
+
+.primary-btn-color:hover {
+  background-color: #b67352;
+  color: white;
+}
+.primary-border {
+  border: 1px solid #ecb159;
+}
+
+.primary-head-color {
+  color: #8cb9bd;
+}
+
+.active {
+  color: #ecb159;
+}
+
+.custom-scroll {
+  overflow-y: scroll;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.stylish-border {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 2px;
+}
+.stylish-border:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #ecb159;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.stylish-border:hover:after {
+  width: 100%;
+  left: 0;
+}
+.stylish-border:hover {
+  color: #ecb159;
+}
+
+.admin.active {
+  background-color: #1900d5;
+  color: #fff;
+}
+.admin:hover {
+  background-color: #1900d5;
+  color: #fff;
+}
+
+.primary-admin-btn {
+  background-color: #1900d5;
+  color: #fff;
+}
+
+.out-of-stock {
+  border: 1px solid #b67352;
+  color: #b67352;
+}
+
+.heading {
+  text-transform: capitalize;
+  color: #ff6426;
+  font-weight: 400;
+  font-family: "Lora", serif;
+}
+
+.heading-part {
+  font-family: "Cardo", serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.heading-part-font {
+  font-family: "Lora", serif;
+  font-size: 15px;
+  color: #555555;
+}
+
+.order {
+  position: relative;
+  color: #ecb159;
+  border: 1px solid #ecb159;
+}
+
+.order:hover {
+  border: none;
+  border-right: 1px solid #ecb159;
+  border-left: 1px solid #ecb159;
+}
+
+.order::before,
+.order::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: #ecb159;
+  transition: width 0.3s ease-in;
+}
+
+.order::before {
+  top: 0;
+  left: 0;
+}
+
+.order::after {
+  bottom: 0;
+  right: 0;
+}
+
+.order:hover::before,
+.order:hover::after {
+  width: calc(100%);
+}
+
+.special-item {
+  border-radius: 100px 0px 623px 77px / 0px 50px 128px 58px;
+  border-top-left-radius: 1.3rem;
+  border-top-right-radius: 1.3rem;
+}
+
+.question {
+  font-family: "Cardo", serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.error-text {
+  font-weight: bold;
+  color: #ecb159;
+  font-family: "Lora", serif;
+  animation: bounce 2s infinite alternate;
+}
+
+.error-heading {
+  font-family: "Cardo", serif;
+  color: #000000bf;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }

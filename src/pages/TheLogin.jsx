@@ -22,6 +22,7 @@ const TheLogin = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
+
       const response = await TheBearer.post("/user/login", values);
 
       const { token } = response.data;
@@ -40,7 +41,7 @@ const TheLogin = () => {
       <div className="flex justify-center">
         <div className="max-w-md w-full px-6 py-8 bg-white shadow-custom-shadow rounded-lg relative">
           <h2 className="text-xl font-bold text-center mb-8 primary-color">
-            Login To Cold and Spicy
+            Login To Orenda Restaurant
           </h2>
           <Formik
             initialValues={initialValues}

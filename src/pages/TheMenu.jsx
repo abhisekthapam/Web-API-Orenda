@@ -1,8 +1,9 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import photo_api from "../api/photoConfig";
+import TheViewOrderModal from "../menu-modal/TheViewOrderModal";
 import ThePlaceOrderModal from "../menu-modal/ThePlaceOrderModal";
+import photo_api from "../api/photoConfig";
+import { Link } from "react-router-dom";
 
 function TheMenu() {
   const selectedTable = localStorage.getItem("selectedTable");
